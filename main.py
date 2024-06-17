@@ -20,6 +20,7 @@ async def main():
     dp.include_router(user_router)
     shed = AsyncIOScheduler(timezone='Europe/Moscow')
     shed.add_job(mailer.minus_days, "cron", hour=23, minute=30)
+    shed.start()
     await dp.start_polling(bot)
 
 
